@@ -1,12 +1,18 @@
 class PostsController < ApplicationController
+	before_filter :check_guest_logged_in!, :except => [:show, :index]
 	def index
-		@posts = Post.all
+		@posts = Post.order('created_at DESC')
 	end
 	def new
 		@post = Post.new
 	end
 	def create
   		@post = Post.new(params[:post])
+  		@post.user = current_user
+  		if admin_signed_in?
+  			@post.admin = current_admin
+  		end
+
   		if @post.save
   		  redirect_to post_path(@post.id)
   		else
@@ -31,5 +37,17 @@ class PostsController < ApplicationController
 	  @post = Post.find(params[:id])
 	  @post.destroy
 	  redirect_to posts_path
+	end
+	
+	private
+	
+	def check_guest_logged_in! 
+	  if user_signed_in?
+	  	authenticate_user!
+	  elsif admin_signed_in?
+	    authenticate_admin!
+	  else
+	  	redirect_to root_path
+	  end   
 	end
 end

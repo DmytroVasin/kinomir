@@ -3,20 +3,37 @@
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th>Autor</th>
+    <th>Posted at</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
  
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.text %></td>
-    <td><%= link_to 'Show', post_path(post.id) %></td>
-    <td><%= link_to 'Edit', edit_post_path(post.id) %></td>
-    <td><%= link_to 'Destroy', post_path(post.id), :method => :delete, :confirm => 'Are you sure?' %></td>
-  </tr>
-<% end %>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.text %></td>
+          <% if post.user.nil? %>
+              <% if post.admin.nil? %>
+                <td> deleted user</td>
+              <% else %>
+                <td> <%= post.admin.name %></td>
+              <% end %>
+          <% else %>
+              <td> <%= post.user.name %></td>
+          <% end %>
+        <td> <%= post.created_at.strftime('%b %d, %H:%M') %></td>
+        <td><%= link_to 'Show', post_path(post.id) %></td>
+        
+        <% if ( current_user && current_user.id == post.user_id ) or current_admin %> 
+            <td><%= link_to 'Edit', edit_post_path(post.id) %></td>
+            <td><%= link_to 'Destroy', post_path(post.id), :method => :delete, :confirm => 'Are you sure?' %></td>
+        <% end %>
+    <% end %>
+
 </table>
 
-<%= link_to 'New post', new_post_path %>
+<% if ( user_signed_in? or admin_signed_in? )%>  
+  <%= link_to 'Create new post', new_post_path %>  
+<% end %>  

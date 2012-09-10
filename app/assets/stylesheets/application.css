@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+#admin_nav {
+	float: right;
+	border: 1px solid red;
+}

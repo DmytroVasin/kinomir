@@ -1,6 +1,22 @@
-<p>
+
+  <strong>created by:</strong>
+  <% if comment.user.nil? %>
+  	<%= comment.admin.name %>
+  <% else %>
+  	<%= comment.user.name %>
+  <% end %>
+
+<br />
+
   <strong>Comment:</strong>
   <%= comment.body %>
-</p>
 
-<%= link_to 'Del', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete %>
+<br />
+
+
+<% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
+		<%= link_to 'Del', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+
+<br />
+<br />

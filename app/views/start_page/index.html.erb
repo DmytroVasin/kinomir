@@ -1,0 +1,9 @@
+<h1>This is index page</h1>
+<%= link_to 'All posts', posts_path %>
+<br />
+<br />
+<%= form_for("user", :url => user_session_path) do |f| %>
+  Email: <br /><%= f.text_field :email %><br />
+  Password:<br /><%= f.password_field :password %> <br />
+  <%= f.submit 'Sign in' %>
+<% end %>

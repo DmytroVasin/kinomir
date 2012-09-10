@@ -8,6 +8,29 @@
 </head>
 <body>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<% if !admin_signed_in? %>
+    <div id="user_nav">
+      <% if user_signed_in? %>
+        <%= link_to current_user.email, edit_user_registration_path %>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+    </div>
+<% end %>
+
+
+
+<% if admin_signed_in? %>
+  <div id="admin_nav">
+    Signed in as <%= current_admin.email %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  </div>
+<% end %>
+
 <%= yield %>
 
 </body>
