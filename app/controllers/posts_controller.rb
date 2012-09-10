@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	before_filter :check_guest_logged_in!, :except => [:show, :index]
 	def index
-		@posts = Post.order('created_at DESC')
+		@posts = Post.order('created_at DESC').page(params[:page]).per(4)
 	end
 	def new
 		@post = Post.new
