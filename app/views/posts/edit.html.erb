@@ -1,0 +1,10 @@
+<h1>Edit post</h1>
+
+<%= form_for :post, :url => post_path(@post), :method => :put do |f| %>
+	<%= render :partial => "error", :locals => { :post => @post } %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+<% end %>
+
+<%= link_to 'back to all post', posts_path %> 
+
+
