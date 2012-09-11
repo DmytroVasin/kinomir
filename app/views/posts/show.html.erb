@@ -1,4 +1,17 @@
 <p>
+  <strong>Avatar!:</strong>
+  <% if @post.user.nil? %>
+      <% if @post.admin.nil? %>
+        <td><%= image_tag("avatars/noneavatars.png") %></td>
+      <% else %>
+        <td><%= image_tag("avatars/admin.png") %></td>
+      <% end %>
+  <% else %>
+        <td><%= image_tag avatar_url(@post.user) %></td>
+  <% end %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
@@ -20,12 +33,12 @@
 		<%= @post.user.name %>
 	<% end %>
 </p>
- 
-<h2>Comments:</h2>
+
+<hr>
+
 	<div id='all_comments'>
 		<%= render @post.comments %>
  	</div>
-
 
 <% if ( user_signed_in? or admin_signed_in? )  %> 
 	<h2>Add a comment:</h2>

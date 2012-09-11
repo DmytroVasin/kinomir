@@ -1,12 +1,27 @@
 <div class='comments'>
   <strong>created by:</strong>
-  	<% if comment.user.nil? %>
-  		<%= comment.admin.name %>
-  	<% else %>
+  	<% if !comment.user.nil? %>
   		<%= comment.user.name %>
+  	<% elsif !comment.admin.nil? %>
+  		<%= comment.admin.name %>
+  	<% else %>	
+  		Deleted user
   	<% end %>
+
   <strong>Comment:</strong>
   <%= comment.body %>
+
+  <strong>Avatar of commenter:</strong>
+  <% if comment.user.nil? %>
+      <% if comment.admin.nil? %>
+        <td><%= image_tag("avatars/noneavatars.png") %></td>
+      <% else %>
+        <td><%= image_tag("avatars/admin.png") %></td>
+      <% end %>
+  <% else %>
+        <td><%= image_tag avatar_url(comment.user) %></td>
+  <% end %>
+
 <% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
 	<%= link_to 'Del', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete %>
 <% end %>

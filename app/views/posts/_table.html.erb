@@ -1,5 +1,6 @@
 <table>
   <tr>
+    <th>Avatar</th>
     <th>Title</th>
     <th>Text</th>
     <th>Autor</th>
@@ -13,6 +14,15 @@
 
     <% @posts.each do |post| %>
       <tr>
+          <% if post.user.nil? %>
+              <% if post.admin.nil? %>
+                <td><%= image_tag("avatars/noneavatars.png") %></td>
+              <% else %>
+                <td><%= image_tag("avatars/admin.png") %></td>
+              <% end %>
+          <% else %>
+                <td><%= image_tag avatar_url(post.user) %></td>
+          <% end %>
         <td><%= post.title %></td>
         <td><%= post.text %></td>
           <% if post.user.nil? %>

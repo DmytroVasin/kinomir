@@ -2,3 +2,4 @@ $('#all_comments').html("<%=j render @post.comments %>");
 
 $('.comments').last().css({'background-color':'#FFFF00'}).animate({'background-color':'#FFFFFF'}, 2000);
 $('#new_comment').trigger( 'reset' );
+$("#new_comment input:submit").attr("disabled","disabled");

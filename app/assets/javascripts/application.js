@@ -15,17 +15,3 @@
 //= require jquery_ujs
 //= require_tree .
 
-// Включение и отключение клавиши при добавлении кментария
-$(function(){
-var box = 0;
-$(":submit").attr("disabled","disabled");
-	$("#comment_body").keyup(function()
-	{
-		box = $(this).val();
-		if (box.length > 0) {
-			$(":submit").removeAttr("disabled");
-		} else {
-			$(":submit").attr("disabled","disabled");
-		}
-	});
-});
