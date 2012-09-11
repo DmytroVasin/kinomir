@@ -34,6 +34,13 @@
 	<% end %>
 </p>
 
+<p>
+  <strong>Categories:</strong>
+  <% @post.categories.each do |cat| %>
+    <%= link_to cat.name, posts_path(:cat=>cat.id) %>
+  <% end %>
+</p>
+
 <hr>
 
 	<div id='all_comments'>
@@ -52,3 +59,6 @@
 	<%= link_to 'Edit', edit_post_path %> 
   <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?' %>
 <% end %>
+
+
+<h1><%= params.inspect %></h1>

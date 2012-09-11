@@ -3,8 +3,16 @@
     <%= f.text_field :title %>
   </div>
   <div>
-    <div>Text:</div>
+  <div>Text:</div>
     <%= f.text_area :text %>
   </div>
+
+<% Category.all.each do |category| %>
+  <%= check_box_tag 'post[category_ids][]', category.id %>
+  <%= category.name %>
+  <br />
+<% end %>
+<br />
+
 
 <%= f.submit %>

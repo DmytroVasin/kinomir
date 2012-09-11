@@ -6,7 +6,7 @@ class ServantsController < ApplicationController
 	end
 	def show
 		@servant = User.find(params[:id])
-		@postsofservant = @servant.posts.limit(2)
+		@postsofservant = @servant.posts
 	end
 	def destroy
 		@servant = User.find(params[:id])

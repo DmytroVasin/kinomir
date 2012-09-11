@@ -6,6 +6,7 @@
     <th>Autor</th>
     <th>Posted at</th>
     <th>(comments)</th>
+    <th>(categories)</th>
     <th></th>
     <th></th>
     <th></th>
@@ -36,6 +37,11 @@
           <% end %>
         <td><%= post.created_at.strftime('%b %d, %H:%M') %></td>
         <td><%= post.comments.count %></td>
+        <td>
+          <% post.categories.each do |cat| %>
+            <%= link_to cat.name, posts_path(:cat=>cat.id) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', post_path(post.id) %></td>
         
         <% if ( current_user && current_user.id == post.user_id ) or current_admin %> 
