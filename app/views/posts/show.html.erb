@@ -22,8 +22,11 @@
 </p>
  
 <h2>Comments:</h2>
-	<%= render @post.comments %>
- 
+	<div id='all_comments'>
+		<%= render @post.comments %>
+ 	</div>
+
+
 <% if ( user_signed_in? or admin_signed_in? )  %> 
 	<h2>Add a comment:</h2>
 	<%= render "comments/form" %>
