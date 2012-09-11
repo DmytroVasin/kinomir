@@ -1,5 +1,7 @@
 <h1>SHOW</h1>
-
+<% if ( current_user && current_user.id == @servant.id ) %>
+  <%= link_to "Edit profile", edit_user_registration_path %>
+<% end %>
    <div><%= link_to(image_tag(avatar_url(@servant)), 'https://ru.gravatar.com/' ) %></div>
    <i>click to your avatar</i>
 

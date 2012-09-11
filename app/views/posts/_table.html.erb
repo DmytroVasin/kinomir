@@ -21,7 +21,7 @@
                 <td><%= image_tag("avatars/admin.png") %></td>
               <% end %>
           <% else %>
-                <td><%= image_tag avatar_url(post.user) %></td>
+                <td><%= link_to image_tag(avatar_url(post.user)), servant_path(post.user.id) %></td>
           <% end %>
         <td><%= post.title %></td>
         <td><%= post.text %></td>

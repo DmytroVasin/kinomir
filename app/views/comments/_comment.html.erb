@@ -19,7 +19,7 @@
         <td><%= image_tag("avatars/admin.png") %></td>
       <% end %>
   <% else %>
-        <td><%= image_tag avatar_url(comment.user) %></td>
+        <td><%= link_to image_tag(avatar_url(comment.user)), servant_path(comment.user.id) %></td>
   <% end %>
 
 <% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
