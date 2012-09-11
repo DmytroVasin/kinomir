@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120910192601) do
+ActiveRecord::Schema.define(:version => 20120911091545) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",              :default => "", :null => false
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(:version => 20120910192601) do
   add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "text"
@@ -52,6 +58,13 @@ ActiveRecord::Schema.define(:version => 20120910192601) do
 
   add_index "posts", ["admin_id"], :name => "index_posts_on_admin_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "states", :force => true do |t|
+    t.integer  "country_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",               :default => "", :null => false
@@ -65,6 +78,8 @@ ActiveRecord::Schema.define(:version => 20120910192601) do
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
     t.string   "name"
+    t.string   "country_id"
+    t.string   "state_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

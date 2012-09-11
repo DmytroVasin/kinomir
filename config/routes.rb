@@ -1,4 +1,5 @@
 General::Application.routes.draw do
+
   root :to => 'start_page#index'
 
 
@@ -11,6 +12,7 @@ General::Application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :servants
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

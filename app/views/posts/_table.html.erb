@@ -32,7 +32,7 @@
                 <td> <%= post.admin.name %></td>
               <% end %>
           <% else %>
-              <td> <%= post.user.name %></td>
+              <td> <%= link_to post.user.name, servant_path(post.user.id) %></td>
           <% end %>
         <td><%= post.created_at.strftime('%b %d, %H:%M') %></td>
         <td><%= post.comments.count %></td>

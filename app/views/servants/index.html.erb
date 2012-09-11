@@ -1,0 +1,33 @@
+<h1>MY SERVANTS</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>last sign in</th>
+    <th>registered at</th>
+    <th>country</th>
+    <th>city</th>
+    <th>Actions:</th>
+  </tr>
+
+  <% @servants.each do |i| %>
+    <tr>
+      <td><%= i.name %></td>
+      <td><%= i.email %></td>
+      <td><%= i.last_sign_in_at.strftime('%b %d, %H:%M') %></td>
+      <td><%= i.created_at.strftime("Registered: %d/%m/%Y at %H:%M") %></td>
+      <td><%= i.country.name %></td>
+      <% if i.state.nil? %>
+      	<td>unknown</td>
+      <% else %>
+      	<td><%= i.state.name %></td>
+      <% end %>
+
+      <td>
+      	<%= link_to 'show', servant_path(i.id) %>
+        <%= link_to "del", servant_path(i.id), :method => :delete %> 
+      </td>
+    </tr>
+
+  <% end %>
+</table>

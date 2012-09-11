@@ -1,0 +1,35 @@
+<h1>SHOW</h1>
+
+   <div><%= link_to(image_tag(avatar_url(@servant)), 'https://ru.gravatar.com/' ) %></div>
+   <i>click to your avatar</i>
+
+
+   <p><%= @servant.name %></p>
+   <p><%= @servant.email %></p>
+   <p><%= @servant.last_sign_in_at.strftime('%b %d, %H:%M') %></p>
+   <p><%= @servant.created_at.strftime("Registered: %d/%m/%Y at %H:%M") %></p>
+   <p><%= @servant.country.name %></p>
+   <% if @servant.state.nil? %>
+   	<p>unknown</p>
+   <% else %>
+   	<p><%= @servant.state.name %></p>
+   <% end %>
+   <p><%= @servant.last_sign_in_at %></p>
+
+
+<h3>Last 2 posts created by <%= @servant.name %>:</h3>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Date</th>
+  </tr>
+    <% @postsofservant.each do |post| %>
+      <tr>
+            <td><%= post.title %></td>
+            <td><%= post.text %></td>
+            <td><%= post.updated_at.strftime("%m/%d/%Y") %></td>
+            <td><%= link_to "show", post_path(post.id) %> </td>
+      </tr>
+    <% end %>
+</table>
