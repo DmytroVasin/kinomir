@@ -11,10 +11,53 @@
  *= require_self
  *= require_tree .
  */
-#admin_nav {
-	float: right;
-	border: 1px solid red;
+
+input {
+	width: 150px !important;
 }
+
 #main_image {
 	float: left;
+}
+.admin_name {
+	color: red !important;
+}
+.control-label {
+	width: 150px !important;
+}
+#midls {
+	width: 600px;
+	margin: 0 auto;
+}
+#sixhan {
+	width: 1000px;
+}
+.message {
+	color: #1C1C1C;
+	background-color: #FFC1C1;
+	display: inline-block;
+	position: absolute;
+	left: 520px;
+	margin: -5px;
+	padding: 0 6px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+#inputName {
+	position: relative;
+}
+.btn-info {
+	width: 300px !important;
+	margin-left: 50px;
+}
+#right {
+	width: 750px;
+	float: right;
+	margin-right: 150px;
+}
+.dl-horizontal dt {
+	width: 150px !important;
+}
+.dl-horizontal dd {
+	margin-left: 180px !important;
 }

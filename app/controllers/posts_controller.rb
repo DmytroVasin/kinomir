@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   		end
 
   		if @post.save
+  		  flash[:notice] = "Post created!"
   		  redirect_to post_path(@post.id)
   		else
   		  render 'new'
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 	def update
   		@post = Post.find(params[:id])
   		if @post.update_attributes(params[:post])
+  		  flash[:notice] = "Post updated"
   		  redirect_to post_path(@post.id)
   		else
   		  render 'edit'

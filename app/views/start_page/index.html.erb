@@ -1,23 +1,36 @@
 <% title "Welcome page" %>
 
-<h1>This is index page</h1>
-<%= link_to 'All posts', posts_path %>
-<br />
-<br />
-<% unless ( current_user or current_admin ) %>
-	<%= form_for("user", :url => user_session_path) do |f| %>
-	  Email: <br /><%= f.text_field :email %><br />
-	  Password:<br /><%= f.password_field :password %> <br />
-	  <%= f.submit 'Sign in' %>
-	<% end %>
-<% end %>
 
-<br />
-<br />
-<br />
-<h4>
-	admin@gmail.com <br>
-	dracon779@gmail.com <br>
-	vasinvaleriy779@gmail.com
-	someone@gmail.com pass ?? usual
-</h4>
+<div id="right">
+  <h2>Rake routes:</h2>
+    <dl class="dl-horizontal">
+    	<dt>/admins/sign_in</dt>
+    	<dd>Стартовая страница </dd>
+    	<dt>/users/login</dt>
+    	<dd>Редактировать двойной логин! (админ + Юзер) </dd>
+    	<dt>/users/registration</dt>
+    	<dd>Регистрация нового юзера</dd>
+    	<dt>/users/edit</dt>
+    	<dd>Редактировать профиль ( только с залогиненым юзером ) </dd>
+    	<dt>/servants/:id</dt>
+    	<dd>просмотреть профиль юзера с :id ( все данные на юзера + просмотр последних 2 постов сделаных юзером )</dd>
+    	<dt>/posts</dt>
+    	<dd>Индексная страница с постами ( кнопки эдит делет доступны только админам )
+    		- юзер может редактировать только те посты, которые были опубликованы данным юзером</dd>
+    	<dt>/posts/new</dt>
+    	<dd>создавать посты может только админ или залогиенный юзер </dd>
+    	<dt>/posts/:id/edit</dt>
+    	<dd>страница доступна только для админа и пользователя создавшего пост</dd>
+    	<dt>/posts/:id</dt>
+    	<dd>Страница просмотра поста ( с большой фотографией \\ если таковая имеется \\ 
+    		присутствует автор статьи и добавление коментариев ( так же их удаление доступно только им самим же и админам )) </dd>
+    	<dt>/servants</dt>
+    	<dd>Индексная страница всех пользователей ( доступна только для админа - кнопка удалить пользователя без удаления его постов)</dd>
+    	<dt>/categories</dt>
+    	<dd>Просмотр и удаление всех категорий ( дступно администрации ) к которым принадлежат посты ( минимум 1 ) </dd>
+    	<dt>/categories/new</dt>
+    	<dd>создание новой категории ( админ доступ )</dd>
+    </dl>
+</div>
+<blockquote><h2>This is index page</h2></blockquote>
+<%= link_to 'All posts', posts_path, :class => 'btn btn-large btn-block btn-info' %>

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require_tree .
 //= require rails.validations
 
@@ -40,5 +41,11 @@ $("#new_comment input:submit").attr("disabled","disabled");
         return false;
         }
 	});
+
+	if ($('.alert strong').html() !== '') {
+		$('.alert').fadeOut(4000);
+	}
+
+
 });
 
