@@ -12,5 +12,6 @@ class User < ActiveRecord::Base
 
   belongs_to :country
   belongs_to :state
+  validates :name, :presence => true, :length => { :minimum => 2 }
 
 end

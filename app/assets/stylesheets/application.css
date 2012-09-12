@@ -15,3 +15,6 @@
 	float: right;
 	border: 1px solid red;
 }
+#main_image {
+	float: left;
+}

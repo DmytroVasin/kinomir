@@ -1,6 +1,8 @@
+<%= title "Users(only admin)" %>
 <h1>MY SERVANTS</h1>
 <table>
   <tr>
+    <th>Avatars</th>
     <th>Name</th>
     <th>Email</th>
     <th>last sign in</th>
@@ -12,11 +14,18 @@
 
   <% @servants.each do |i| %>
     <tr>
+      <td><%= image_tag(avatar_url(i)) %></td>
       <td><%= i.name %></td>
       <td><%= i.email %></td>
       <td><%= i.last_sign_in_at.strftime('%b %d, %H:%M') %></td>
       <td><%= i.created_at.strftime("Registered: %d/%m/%Y at %H:%M") %></td>
-      <td><%= i.country.name %></td>
+      
+      <% if i.country.nil? %>
+        <td>unknown</td>
+      <% else %>
+        <td><%= i.country.name %></td>
+      <% end %>
+
       <% if i.state.nil? %>
       	<td>unknown</td>
       <% else %>

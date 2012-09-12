@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :text, :title, :category_ids
+  attr_accessible :text, :title, :category_ids, :image
 
   has_and_belongs_to_many :categories
 
@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
 
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id = ?',cid])}
 
-
+  mount_uploader :image, ImageUploader
 
 
 

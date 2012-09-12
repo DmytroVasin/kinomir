@@ -1,3 +1,14 @@
+<%= title "Showing" %>
+<p>
+<% if @post.image? %>
+  <%= image_tag(@post.image_url(:thumb), :alt => "some", :id => 'main_image')  %>
+<% else %>
+  <%= image_tag('avatars/no_image_yet.jpg', :alt => "no_image", :id => 'main_image')  %>
+<% end %>
+  <%= @post.text %>
+
+</p>
+
 <p>
   <strong>Avatar!:</strong>
   <% if @post.user.nil? %>
@@ -59,6 +70,3 @@
 	<%= link_to 'Edit', edit_post_path %> 
   <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?' %>
 <% end %>
-
-
-<h1><%= params.inspect %></h1>
