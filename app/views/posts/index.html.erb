@@ -1,6 +1,15 @@
 <h1>Listing Posts</h1>
 
 
+<%= form_tag posts_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+
+
 <div id='table_of_posts'>
   <%= render 'table' %>
 </div>

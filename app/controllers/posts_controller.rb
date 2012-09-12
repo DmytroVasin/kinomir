@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 	before_filter :check_guest_logged_in!, :except => [:show, :index]
 	def index
-		@posts = Post.order('created_at DESC').page(params[:page]).per(8)
+		@posts = Post.text_search(params[:query]).page(params[:page]).per(8)
+
 		@posts = @posts.by_category_id(params[:cat]).page(params[:page]).per(8) if params[:cat].present?
 	end
 	def new

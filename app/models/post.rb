@@ -11,4 +11,22 @@ class Post < ActiveRecord::Base
 
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id = ?',cid])}
 
+
+
+
+
+include PgSearch
+pg_search_scope :search, against: [:title, :text],
+	associated_against: {user: :name, comments: [:body]}
+
+# end of 343 DB search in testing and production
+
+	def self.text_search(query)
+	  if query.present?
+	    search(query)
+	  else
+	    scoped
+	  end
+	end
+
 end
