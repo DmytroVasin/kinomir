@@ -1,4 +1,4 @@
-<%= title "My profile" %>
+<% title @servant.name %>
 
 <h1>SHOW</h1>
 <% if ( current_user && current_user.id == @servant.id ) %>

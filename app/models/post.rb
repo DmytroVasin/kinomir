@@ -8,11 +8,11 @@ class Post < ActiveRecord::Base
   belongs_to :admin
   validates :title, :presence => true, :length => { :minimum => 2 }
   validates :text, :presence => true, :length => { :minimum => 2 }
-
+  
   scope :by_category_id, lambda {|cid| joins(:categories).where(['categories.id = ?',cid])}
 
   mount_uploader :image, ImageUploader
-
+  
 
 
 include PgSearch

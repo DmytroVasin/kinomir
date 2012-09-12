@@ -1,4 +1,4 @@
-<%= title "Showing" %>
+<% title @post.title %>
 <p>
 <% if @post.image? %>
   <%= image_tag(@post.image_url(:thumb), :alt => "some", :id => 'main_image')  %>
