@@ -5,7 +5,7 @@
 <legend><h3>Sign in</h3></legend>
 
 <% if current_admin %>
-	<div> unlogin please, before you enter in user dirrectory </div>
+	<blockquote><small>unlogin please, before you enter in user dirrectory</small></blockquote>
 <% else %>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>

@@ -1,11 +1,10 @@
 <% title @post.title %>
-<h1>Edit post</h1>
+<blockquote><h2>Edit post</h2></blockquote>
 
-<%= form_for :post, :url => post_path(@post), :method => :put do |f| %>
-	<%= render :partial => "error", :locals => { :post => @post } %>
+<%= form_for :post, :url => post_path(@post), :html => { :class => "form-horizontal" }, :method => :put do |f| %>
 	<%= render :partial => "form", :locals => { :f => f } %>
 <% end %>
 
-<%= link_to 'back to all post', posts_path %> 
+<%= link_to 'back to all post', posts_path, :class => 'btn_back btn btn-inverse btn-large'  %> 
 
 

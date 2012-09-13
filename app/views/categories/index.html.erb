@@ -1,7 +1,10 @@
 <% title "All categories (only admin)" %>
-<h1>Категории</h1>
+<div id='sixhan'>
+<div id='midls'>
 
-<table>
+<blockquote><h3>Категории<h3></blockquote>
+
+<table class="table table-striped table-bordered">
   <tr>
     <th>Categories name</th>
     <th>Actions</th>
@@ -16,7 +19,7 @@
   <% end %>
 </table>
 
+<%= link_to "Add categories", new_category_path , :class => 'btn btn-primary btn_back' %>
 
-
-
-<%= link_to "New post", :action => "new" %>
+</div>
+</div>

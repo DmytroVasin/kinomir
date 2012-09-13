@@ -58,7 +58,7 @@ input {
 .dl-horizontal dt {
 	width: 150px !important;
 }
-.dl-horizontal dd {
+.dl-horizontal dd, .margining {
 	margin-left: 180px !important;
 }
 
@@ -81,11 +81,12 @@ input {
 	width: 900px;
 	margin-left: 150px;
 	padding: 20px 20px 20px 20px;
-	background-color: #F9F9F9;
+	background-color: #DCDCDC;
 }
 .box_of_post {
 	background-color: white;
 	padding-top: 10px;
+	margin-bottom: 50px;
 }
 
 .title_box h4 {
@@ -138,7 +139,7 @@ input {
 	text-align: center;
 	padding-bottom: 10px;
 	padding-top: 10px;
-	background-color: #DCDCDC;
+	background-color: #F9F9F9;
 }
 .admin_area_btn {
 
@@ -149,4 +150,14 @@ input {
 .btn_back {
 	margin-left: 50px !important;
 	margin-top: 20px !important;
+}
+.floating {
+	float: right;
+	margin: 0px !important;
+}
+#user_country_id {
+	width: 190px;
+}
+#user_state_id {
+	width: 190px;
 }

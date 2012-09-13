@@ -1,43 +1,106 @@
 <% title "Edit profile" %>
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id='sixhan'>
+<div id='midls'>
 
-<%= link_to "Review of your profile", servant_path(current_user.id) %>
+<%= link_to "Back", :back , :class => 'btn btn-inverse btn-large btn_back floating'%>
+<legend><h3>Edit <%= resource_name.to_s.humanize %></h3></legend>
+
+<%= link_to "Review of your profile", servant_path(current_user.id), :class => 'btn floating' %>
 
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal'  }) do |f| %>
 
-
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name %></div>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div class="field">
-    <%= f.label :country_id %><br />
-    <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
+  <div class="control-group">
+      <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-user"></i></span>
+        <%= f.text_field :name, :id => "inputName", :placeholder => "Name" %>
+      </div>
+    </div>
   </div>
+
+  <div class="control-group">
+      <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-envelope"></i></span>
+        <%= f.email_field :email, :id => "inputEmail", :placeholder => "Email" %>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="control-group">
+    <%= f.label :country_id, :class => "control-label" %>
+    <div class="controls">
+      <%= f.collection_select :country_id, Country.order(:name), :id, :name, include_blank: true %>
+  </div>
+</div>
+
+
+
+
+    <div class="controls">
+<div class="control-group">
   <div class="field">
-    <%= f.label :state_id, "State or Province" %><br />
     <%= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true %>
   </div>
+</div>
+
+</div>
 
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+<i>(leave blank if you don't want to change it)</i><br />
+  <div class="control-group">
+      <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-lock"></i></span>
+        <%= f.password_field :password, :id => "inputPassword", :placeholder => "Password", :autocomplete => "off" %>
+      </div>
+    </div>
+  </div>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Update" %></div>
+  <div class="control-group">
+      <%= f.label :password_confirmation, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-lock"></i></span>
+        <%= f.password_field :password_confirmation, :id => "inputPasswordConfirmation", :placeholder => "Password Confirmation" %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+ <i>(we need your current password to confirm your changes)</i><br />
+  <div class="control-group">
+      <%= f.label :current_password, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-lock"></i></span>
+        <%= f.password_field :current_password, :id => "inputCurrentPassword", :placeholder => "Password" %>
+      </div>
+    </div>
+  </div>
+
+
+<div class="control-group">
+   <div class="controls">
+  <%= f.submit "Update", :class => 'btn'  %>
+   </div>
+</div>
+
 <% end %>
 
-<h3>Cancel my account</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger'  %>
+
+</div>
+</div>

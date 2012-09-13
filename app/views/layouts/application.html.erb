@@ -19,7 +19,7 @@
             <li class="divider-vertical"></li>
             <% if !admin_signed_in? %>
                   <% if user_signed_in? %>
-                    <li><%= link_to current_user.email, edit_user_registration_path %></li>
+                    <li><%= link_to current_user.email, servant_path(current_user.id) %></li>
                     <li class="divider-vertical"></li>
                     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
                     <li class="divider-vertical"></li>
@@ -35,6 +35,10 @@
                     <li class = 'icon-exclamation-sign'></li>
                     <li class="divider-vertical"></li>
                     <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                    <li class="divider-vertical"></li>
+                    <li><%= link_to "Servants", servants_path, :class => 'admin_name' %></li>
+                    <li class="divider-vertical"></li>
+                    <li><%= link_to "Categories", categories_path, :class => 'admin_name' %></li>
                     <li class="divider-vertical"></li>
             <% end %>
           </ul>
