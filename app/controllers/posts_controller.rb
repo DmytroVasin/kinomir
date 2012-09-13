@@ -49,7 +49,12 @@ class PostsController < ApplicationController
 	
 	def check_guest_logged_in! 
 	  if user_signed_in?
-	  	authenticate_user!	
+	  	authenticate_user!
+	  	
+	  	if ( current_user.id == @some.user.id ) 
+	  	else
+	  		return false;
+	  	end	
 
 	  elsif admin_signed_in?
 	    authenticate_admin!
