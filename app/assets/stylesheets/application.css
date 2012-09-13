@@ -143,3 +143,10 @@ input {
 .admin_area_btn {
 
 }
+#text_area {
+	width: 600px !important;
+}
+.btn_back {
+	margin-left: 50px !important;
+	margin-top: 20px !important;
+}
