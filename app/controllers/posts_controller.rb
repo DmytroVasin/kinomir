@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
-	before_filter :check_guest_logged_in!, :except => [:show, :index]
+	before_filter :check_guest_logged_in!, :except => [:index, :show]
+
+
 	def index
 		@posts = Post.order('created_at DESC').text_search(params[:query]).page(params[:page]).per(6)
 
@@ -47,7 +49,8 @@ class PostsController < ApplicationController
 	
 	def check_guest_logged_in! 
 	  if user_signed_in?
-	  	authenticate_user!
+	  	authenticate_user!	
+
 	  elsif admin_signed_in?
 	    authenticate_admin!
 	  else

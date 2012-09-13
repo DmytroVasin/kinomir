@@ -2,7 +2,12 @@
 	<blockquote><h2>Add a comment:</h2></blockquote>
 	<div class = 'fild_to_add_comment'>
     <div class='bottom_marg'>
-    <%= link_to current_user.name, servant_path(@post.user.id) %>:
+    <% if current_user.nil? %>
+      <%= current_admin.name %>:
+    <% else current_admin.nil? %>
+      <%= link_to current_user.name, servant_path(current_user.id) %>:
+    <% end %>
+
     </div> 	
   	<% if current_user.nil? %>
   	    <% if current_admin.nil? %>
@@ -15,7 +20,7 @@
   	<% end %>
 
 		<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
-		    <%= f.text_area :body, :class => 'field_to_add', :placeholder => "Add some comment"  %>
+		    <%= f.text_area :body, :class => 'field_to_add', :placeholder => "Add some comment with ajax"  %>
 		    <%= f.submit "Create", :class => 'btn btn-success add_btn_for_com'  %>
 		<% end %>
 	</div>

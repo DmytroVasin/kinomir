@@ -1,6 +1,5 @@
 <% title @post.title %>
 <div id = 'box_of_post_show'>
-  
   <% if @post.image? %>
     <%= image_tag(@post.image_url(:thumb), :alt => "some", :id => 'main_image')  %>
   <% else %>
@@ -49,6 +48,7 @@
         <td><%= image_tag avatar_url(@post.user) %></td>
   <% end %>
 </span>
+<div class='time_pablised'>Published at: <%= @post.created_at.strftime('%e %B %Y, %H:%M') %></div>
 <hr>
 
 <div id='all_comments'>

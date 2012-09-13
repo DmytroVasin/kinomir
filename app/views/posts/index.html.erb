@@ -11,12 +11,15 @@
 <% if ( user_signed_in? or admin_signed_in? )%>  
   <%= link_to 'Create new post', new_post_path, :class => 'btn btn-large btn-primary new_post' %>  
 <% end %>  
+
 <div class='paginator'>
   <%= paginate @posts, :window => 3, :remote => true %>
 </div>
+
 <div id='all_posts_box'>
   <%= render 'tablenew' %>
 </div>
+
 <div class='paginator'>
   <%= paginate @posts, :window => 3, :remote => true %>
 </div>
