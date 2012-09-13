@@ -66,7 +66,10 @@ input {
 	text-align: center !important;
 	margin: 0 !important;
 }
-
+#error_for_check_box {
+	color: red;
+	margin-left: 180px;
+}
 
 
 
@@ -91,7 +94,6 @@ input {
 
 .title_box h4 {
 	color: #0B2C39;
-    font-family: Georgia;
     font-size: 16px;
     font-style: italic;
     font-weight: normal;
@@ -160,4 +162,73 @@ input {
 }
 #user_state_id {
 	width: 190px;
+}
+#box_of_post_show {
+	width: 1250px;
+	margin-left: 30px;
+}
+#box_of_post_show img {
+	margin: 0 20px 5px 5px;
+	float: left;
+}
+.title_of_post_show {
+	color: #0B2C39;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: normal;
+    padding-left: 700px !important;
+	padding-bottom: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.text_of_post_show {
+	text-indent: 20px;
+	color: #605E5E;
+	line-height: 22px;
+	margin-bottom: 10px;
+	min-height: 360px;
+}
+.avatar_of_post_user {
+	float: right;
+	font-size: 12px;
+}
+#form_comment {
+	width: 600px;
+}
+.fild_to_add_comment {
+	border: 1px solid #E5E2D5;
+	margin-left: 100px;
+	padding: 10px 20px 0px 20px;
+	width: 780px;
+	background-color: #F6F5F0;
+	min-height: 100px;
+	margin-bottom: 10px;
+	position: relative;
+	padding-bottom: 10px;
+}
+.field_to_add {
+	border: 1px solid #E5E2D5;
+	width: 500px;
+	height: 100px;
+}
+.add_btn_for_com {
+	margin-top: 40px;
+	margin-left: 20px;
+}
+.bottom_marg {
+	margin-bottom: 5px;
+}
+.autor_com {
+	float: left;
+}
+.del_com {
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+.comment_body {
+	overflow: hidden;
+}
+.time_com {
+	float: right;
 }

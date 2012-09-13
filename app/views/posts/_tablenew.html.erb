@@ -1,5 +1,5 @@
 <% @posts.each do |post| %>
-  <div class='box_of_post'>
+  <div id='box_of_post'>
     <div class='id_of_post'># <%= post.id %></div>
     <div class='time_pablised'>Published at: <%= post.created_at.strftime('%d.%M.%Y %H:%M') %></div>
     <div class='title_box'><h4><%= link_to post.title, post_path(post.id) %></h4> </div>

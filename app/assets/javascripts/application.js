@@ -37,7 +37,7 @@ $("#new_comment input:submit").attr("disabled","disabled");
 	$("#new_post").submit(function(){
         var n = $("input:checked").length;
         if ( n === 0 ) {
-        $("#error_for_check_box").text("выберите область !");
+        $("#error_for_check_box").text("выберите область знаний!");
         return false;
         }
 	});

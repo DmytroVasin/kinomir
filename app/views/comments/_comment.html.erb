@@ -1,28 +1,40 @@
-<div class='comments'>
-  <strong>created by:</strong>
+<div class='fild_to_add_comment'>
+  <div class='autor_com bottom_marg'>
   	<% if !comment.user.nil? %>
-  		<%= comment.user.name %>
+      <%= link_to current_user.name, servant_path(@post.user.id) %>
   	<% elsif !comment.admin.nil? %>
   		<%= comment.admin.name %>
   	<% else %>	
   		Deleted user
   	<% end %>
+  </div>
+    
+  <div class='time_com'>
+    <%= comment.created_at.strftime('%d.%M.%Y %H:%M') %>
+  </div>    
+  <div class='clear'></div>
 
-  <strong>Comment:</strong>
-  <%= comment.body %>
 
-  <strong>Avatar of commenter:</strong>
-  <% if comment.user.nil? %>
-      <% if comment.admin.nil? %>
-        <td><%= image_tag("avatars/noneavatars.png") %></td>
-      <% else %>
-        <td><%= image_tag("avatars/admin.png") %></td>
-      <% end %>
-  <% else %>
-        <td><%= link_to image_tag(avatar_url(comment.user)), servant_path(comment.user.id) %></td>
+  <div>
+    <% if comment.user.nil? %>
+        <% if comment.admin.nil? %>
+          <td><%= image_tag("avatars/noneavatars.png") %></td>
+        <% else %>
+          <td><%= image_tag("avatars/admin.png") %></td>
+        <% end %>
+    <% else %>
+          <td><%= link_to image_tag(avatar_url(comment.user)), servant_path(comment.user.id) %></td>
+    <% end %>
+  </div>
+
+  <div class='comment_body'>
+    <%= comment.body %>
+  </div>  
+
+  <% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
+  	<%= link_to 'Delete', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-mini del_com' %>
   <% end %>
-
-<% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
-	<%= link_to 'Del', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete %>
-<% end %>
+<div class='clear'></div>
 </div>
+
+<div class='clear'></div>

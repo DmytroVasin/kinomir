@@ -1,16 +1,44 @@
 <% title @post.title %>
-<p>
-<% if @post.image? %>
-  <%= image_tag(@post.image_url(:thumb), :alt => "some", :id => 'main_image')  %>
-<% else %>
-  <%= image_tag('avatars/no_image_yet.jpg', :alt => "no_image", :id => 'main_image')  %>
-<% end %>
+<div id = 'box_of_post_show'>
+  
+  <% if @post.image? %>
+    <%= image_tag(@post.image_url(:thumb), :alt => "some", :id => 'main_image')  %>
+  <% else %>
+    <%= image_tag('avatars/no_image_yet.jpg', :alt => "no_image", :id => 'main_image')  %>
+  <% end %>
+
+
+
+<div class ='title_of_post_show'>
+  <%= @post.title %>
+</div>
+ 
+<div class ='text_of_post_show'>
   <%= @post.text %>
+</div>
 
-</p>
+<div class='autor'>
+  <strong>Autor:</strong>
+	<% if @post.user.nil? %>
+		<% if @post.admin.nil? %>
+			deleted user
+		<% else %>
+			<%= @post.admin.name %>
+		<% end %>
+	<% else %>
+		<%= link_to @post.user.name, servant_path(@post.user.id) %>
+	<% end %>
+</div>
 
-<p>
-  <strong>Avatar!:</strong>
+<div class='tags'>
+  <strong>Categories:</strong>
+  <% @post.categories.each do |cat| %>
+    <%= link_to cat.name, posts_path(:cat=>cat.id) %>
+  <% end %>
+</div>
+<div class='clear'></div>
+
+<span class='avatar_of_post_user'>
   <% if @post.user.nil? %>
       <% if @post.admin.nil? %>
         <td><%= image_tag("avatars/noneavatars.png") %></td>
@@ -20,53 +48,26 @@
   <% else %>
         <td><%= image_tag avatar_url(@post.user) %></td>
   <% end %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @post.text %>
-</p>
-
-<p>
-  <strong>Autor:</strong>
-	<% if @post.user.nil? %>
-		<% if @post.admin.nil? %>
-			deleted user
-		<% else %>
-			<%= @post.admin.name %>
-		<% end %>
-	<% else %>
-		<%= @post.user.name %>
-	<% end %>
-</p>
-
-<p>
-  <strong>Categories:</strong>
-  <% @post.categories.each do |cat| %>
-    <%= link_to cat.name, posts_path(:cat=>cat.id) %>
-  <% end %>
-</p>
-
+</span>
 <hr>
 
-	<div id='all_comments'>
-		<%= render @post.comments %>
- 	</div>
+<div id='all_comments'>
+	<%= render @post.comments %>
+</div>
+
+<div class='clear'></div>
 
 <% if ( user_signed_in? or admin_signed_in? )  %> 
-	<h2>Add a comment:</h2>
 	<%= render "comments/form" %>
 <% end %>
 
-<%= link_to "back to all", posts_path %> 
 
+  <div class='controls_area'>
+    <%= link_to "back to all", posts_path, :class => 'btn btn-primary admin_area_btn' %> 
+    <% if ( current_user && current_user.id == @post.user_id ) or current_admin %> 
+    	<%= link_to 'Edit', edit_post_path, :class => 'btn btn-primary admin_area_btn' %> 
+      <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
+    <% end %>
+  </div>
 
-<% if ( current_user && current_user.id == @post.user_id ) or current_admin %> 
-	<%= link_to 'Edit', edit_post_path %> 
-  <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?' %>
-<% end %>
+</div>

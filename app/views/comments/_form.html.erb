@@ -1,9 +1,22 @@
-<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :size => "30x10"  %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class='form_comment'>
+	<blockquote><h2>Add a comment:</h2></blockquote>
+	<div class = 'fild_to_add_comment'>
+    <div class='bottom_marg'>
+    <%= link_to current_user.name, servant_path(@post.user.id) %>:
+    </div> 	
+  	<% if current_user.nil? %>
+  	    <% if current_admin.nil? %>
+  	      <%= image_tag("avatars/noneavatars.png") %>
+  	    <% else %>
+  	      <%= image_tag("avatars/admin.png") %>
+  	    <% end %>
+  	<% else %>
+  	      <%= image_tag avatar_url(current_user) %>
+  	<% end %>
+
+		<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+		    <%= f.text_area :body, :class => 'field_to_add', :placeholder => "Add some comment"  %>
+		    <%= f.submit "Create", :class => 'btn btn-success add_btn_for_com'  %>
+		<% end %>
+	</div>
+</div>
