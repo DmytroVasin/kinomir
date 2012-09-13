@@ -32,6 +32,9 @@ input {
 #sixhan {
 	width: 1000px;
 }
+#tenhan {
+	width: 1000px;
+}
 .message {
 	color: #1C1C1C;
 	background-color: #FFC1C1;
@@ -231,4 +234,11 @@ input {
 }
 .time_com {
 	float: right;
+}
+.btn_size {
+	width: 40px !important;
+	margin-left: 0px !important;
+}
+.margining tr td {
+	vertical-align: middle !important;
 }

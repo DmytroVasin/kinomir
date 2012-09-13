@@ -48,7 +48,7 @@
             <td><%= post.title %></td>
             <td><%= post.text.truncate(200, :separator => ' ') %></td>
             <td><%= post.updated_at.strftime("%d/%M/%Y") %></td>
-            <td><%= link_to "show", post_path(post.id) %> </td>
+            <td><%= link_to "show", post_path(post.id), :class => 'btn btn-info btn-mini btn_size' %> </td>
       </tr>
     <% end %>
 </table>
