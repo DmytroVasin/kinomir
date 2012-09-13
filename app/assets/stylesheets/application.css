@@ -61,3 +61,85 @@ input {
 .dl-horizontal dd {
 	margin-left: 180px !important;
 }
+
+.form-search {
+	text-align: center !important;
+	margin: 0 !important;
+}
+
+
+
+
+.del {
+	text-decoration: line-through;
+}
+.new_post {
+	margin-bottom: 20px !important;
+	margin-left: 50px;
+}
+#all_posts_box {
+	width: 900px;
+	margin-left: 150px;
+	padding: 20px 20px 20px 20px;
+	background-color: #F9F9F9;
+}
+.box_of_post {
+	background-color: white;
+	padding-top: 10px;
+}
+
+.title_box h4 {
+	color: #0B2C39;
+    font-family: Georgia;
+    font-size: 16px;
+    font-style: italic;
+    font-weight: normal;
+	padding-left: 160px;
+	padding-top: 20px;
+	margin-bottom: 25px;
+	padding-bottom: 2px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.body_box {
+	margin: 15px 22px 5px 22px;
+	text-indent: 10px;
+	color: #605E5E;
+	line-height: 18px;
+}
+.body_box img {
+	margin: 0 20px 5px 5px;
+	float: left;
+}
+.tags {
+	margin-left: 15px;
+	padding-bottom: 10px;
+	float: left;
+}
+.tags a {
+	margin-right: 4px;
+}
+.time_pablised {
+	float: right;
+	font-size: 12px;
+	margin-right: 50px;
+}
+.id_of_post {
+	float: left;
+	margin-left: 12px;
+}
+.autor {
+	float: right;
+	margin-right: 12px;
+}
+.clear {
+	clear: both;
+}
+.controls_area {
+	text-align: center;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	background-color: #DCDCDC;
+}
+.admin_area_btn {
+
+}

@@ -1,29 +1,22 @@
 <% title "All posts" %>
-<h1>Listing Posts</h1>
+<blockquote><h2>List of posts</h2></blockquote>
 
-
-<%= form_tag posts_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :query, params[:query] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+<%= form_tag posts_path, :method => 'get', :class => 'form-search' do %>
+  <div class="input-append">
+    <%= text_field_tag :query, params[:query], :class => "span2 search-query", :placeholder => "Posts only" %>
+    <%= button_tag "Search", :name => nil, :class => 'btn' %>
+  </div>
 <% end %>
 
-
-
-<div id='table_of_posts'>
-  <%= render 'table' %>
-</div>
-  
-<div id='paginator'>
+<% if ( user_signed_in? or admin_signed_in? )%>  
+  <%= link_to 'Create new post', new_post_path, :class => 'btn btn-large btn-primary new_post' %>  
+<% end %>  
+<div class='paginator'>
   <%= paginate @posts, :window => 3, :remote => true %>
 </div>
-
-<br />
-<br />
-<br />
-<% if ( user_signed_in? or admin_signed_in? )%>  
-  <%= link_to 'Create new post', new_post_path %>  
-<% end %>  
-
-
+<div id='all_posts_box'>
+  <%= render 'tablenew' %>
+</div>
+<div class='paginator'>
+  <%= paginate @posts, :window => 3, :remote => true %>
+</div>

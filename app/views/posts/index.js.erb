@@ -1,2 +1,2 @@
-$('#table_of_posts').html('<%= escape_javascript render(partial: "table") %>');
-$('#paginator').html('<%= escape_javascript(paginate(@posts, :window => 3, :remote => true).to_s) %>');
+$('#all_posts_box').html('<%= escape_javascript render(partial: "tablenew") %>');
+$('.paginator').html('<%= escape_javascript(paginate(@posts, :window => 3, :remote => true).to_s) %>');
