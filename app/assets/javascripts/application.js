@@ -54,7 +54,7 @@ $("#new_comment input:submit").attr("disabled","disabled");
 
 SetTimeZone();
 
-
+	
 
 });
 
