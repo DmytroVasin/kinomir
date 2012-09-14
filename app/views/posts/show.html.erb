@@ -20,7 +20,7 @@
   <strong>Autor:</strong>
 	<% if @post.user.nil? %>
 		<% if @post.admin.nil? %>
-			deleted user
+			<span class='del'> deleted user </span>
 		<% else %>
 			<%= @post.admin.name %>
 		<% end %>

@@ -148,9 +148,7 @@ input {
 	padding-bottom: 10px;
 	padding-top: 10px;
 	background-color: #F9F9F9;
-}
-.admin_area_btn {
-
+	position: relative;
 }
 #text_area {
 	width: 600px !important;
@@ -244,4 +242,9 @@ input {
 }
 .margining tr td {
 	vertical-align: middle !important;
+}
+.count_comments {
+	position: absolute;
+	top: 14px;
+	left: 60px;
 }

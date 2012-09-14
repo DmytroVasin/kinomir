@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.order('created_at DESC').text_search(params[:query]).page(params[:page]).per(6)
-
+		
 		@posts = @posts.by_category_id(params[:cat]).page(params[:page]).per(6) if params[:cat].present?
 	end
 	def new

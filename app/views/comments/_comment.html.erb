@@ -1,11 +1,12 @@
 <div class='fild_to_add_comment'>
+
   <div class='autor_com bottom_marg'>
-  	<% if !comment.user.nil? %>
-      <%= link_to current_user.name, servant_path(@post.user.id) %>
-  	<% elsif !comment.admin.nil? %>
-  		<%= comment.admin.name %>
+  	<% if comment.user.present? %>
+      <%= link_to comment.user.name, servant_path(comment.user.id) %> says:
+  	<% elsif comment.admin_id.present? %>
+  		<%= comment.admin.name %> says:
   	<% else %>	
-  		Deleted user
+  		<span class='del'>Deleted user says:</span>
   	<% end %>
   </div>
     

@@ -2,7 +2,7 @@
   <div class='box_of_post'>
     <div class='id_of_post'># <%= post.id %></div>
     <div class='time_pablised'>Published at: <%= post.created_at.strftime('%e %B %Y, %H:%M') %></div>
-    <div class='title_box'><h4><%= link_to post.title, post_path(post.id) %></h4> </div>
+    <div class='title_box'><h4><%= link_to post.title, post_path(post.id) %></h4></div>
     <div class='body_box'>
       <% if post.image? %>
         <%= image_tag(post.image_url(:main), :alt => "some", :id => 'main_image')  %>
@@ -35,6 +35,7 @@
     </div>
     <div class='clear'></div>
     <div class='controls_area'>
+      <span class='count_comments'>( <%= pluralize(post.comments.count, ") comment") %></span>
       <%= link_to 'Show', post_path(post.id) , :class => 'btn btn-primary admin_area_btn'%>
       <% if ( current_user && current_user.id == post.user_id ) or current_admin %> 
         <%= link_to 'Edit', edit_post_path(post.id), :class => 'btn btn-primary admin_area_btn' %>

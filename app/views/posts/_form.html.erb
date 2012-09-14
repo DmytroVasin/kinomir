@@ -15,7 +15,9 @@
   </div>
 </div>
 
+<br />
 <div class="controls">
+<i>(leave blank if you don't want to change it)</i><br />
   <% Category.all.each do |category| %>
     <label class="checkbox inline">
       <%= check_box_tag 'post[category_ids][]', category.id %>

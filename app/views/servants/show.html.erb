@@ -4,8 +4,9 @@
   <% if ( current_user && current_user.id == @servant.id ) %>
     <%= link_to "Edit profile", edit_user_registration_path, :class => 'btn btn-warning new_post' %>
   <% end %>
-  <div class = 'new_post'><%= link_to(image_tag(avatar_url(@servant)), 'https://ru.gravatar.com/' ) %></div>
-  <blockquote><i>click to your avatar to change it</i></blockquote>
+  <!-- <div class = 'new_post'><%= link_to(image_tag(avatar_url(@servant)), 'https://ru.gravatar.com/' ) %></div> -->
+  <div class = 'new_post'><%= image_tag(avatar_url(@servant)) %></div>
+  <!-- <blockquote><i>click to your avatar to change it</i></blockquote> -->
 
     <dl class="dl-horizontal">
       <dt>User name: </dt>
