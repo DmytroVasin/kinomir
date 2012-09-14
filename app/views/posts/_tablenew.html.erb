@@ -41,7 +41,6 @@
         <%= link_to 'Edit', edit_post_path(post.id), :class => 'btn btn-primary admin_area_btn' %>
         <%= link_to 'Destroy', post_path(post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
       <% end %>
-      (<%= post.comments.count %>) comments
     </div>
   </div>
 <% end %>
