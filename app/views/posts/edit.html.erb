@@ -1,4 +1,5 @@
 <% title @post.title %>
+
 <blockquote><h2>Edit post</h2></blockquote>
 
 <%= form_for :post, :url => post_path(@post), :html => { :class => "form-horizontal" }, :method => :put do |f| %>

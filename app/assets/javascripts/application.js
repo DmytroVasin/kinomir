@@ -46,6 +46,15 @@ $("#new_comment input:submit").attr("disabled","disabled");
 		$('.alert').fadeOut(4000);
 	}
 
+	function SetTimeZone() {
+        var today = new Date();
+        var offset = -(today.getTimezoneOffset()/60);
+        $.cookie('time_zone', offset);
+	}
+
+SetTimeZone();
+
+
 
 });
 

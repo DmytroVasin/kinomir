@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
 	before_filter :check_guest_logged_in!, :except => [:index, :show]
 
+	before_filter :set_timezone 
+	
+	def set_timezone  
+	 min = request.cookies['time_zone'].to_i
+	 Time.zone = ActiveSupport::TimeZone[min]
+	end 
+
+
+
 
 	def index
 		@posts = Post.order('created_at DESC').text_search(params[:query]).page(params[:page]).per(6)
