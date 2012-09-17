@@ -18,15 +18,13 @@
 
 <div class='autor'>
   <strong>Autor:</strong>
-	<% if @post.user.nil? %>
-		<% if @post.admin.nil? %>
-			<span class='del'> deleted user </span>
-		<% else %>
-			<%= @post.admin.name %>
-		<% end %>
-	<% else %>
-		<%= link_to @post.user.name, servant_path(@post.user.id) %>
-	<% end %>
+    <% if @post.user.nil? %>
+        <span class='del'>Deleted user</span>
+    <% elsif @post.user.roles.first.name == "user" %>
+        <%= link_to @post.user.name, servant_path(@post.user.id) %>
+    <% elsif @post.user.roles.first.name == "admin" %>    
+        <%= @post.user.name %>
+    <% end %>
 </div>
 
 <div class='tags'>
@@ -39,13 +37,11 @@
 
 <span class='avatar_of_post_user'>
   <% if @post.user.nil? %>
-      <% if @post.admin.nil? %>
-        <td><%= image_tag("avatars/noneavatars.png") %></td>
-      <% else %>
-        <td><%= image_tag("avatars/admin.png") %></td>
-      <% end %>
-  <% else %>
-        <td><%= image_tag avatar_url(@post.user) %></td>
+      <%= image_tag("avatars/noneavatars.png") %>
+  <% elsif @post.user.roles.first.name == "user" %>
+      <%= image_tag avatar_url(@post.user) %>
+  <% elsif @post.user.roles.first.name == "admin" %> 
+      <%= image_tag("avatars/admin.png") %>
   <% end %>
 </span>
 <div class='time_pablised'>Published at: <%= @post.created_at.strftime('%e %B %Y, %H:%M') %></div>
@@ -57,14 +53,14 @@
 
 <div class='clear'></div>
 
-<% if ( user_signed_in? or admin_signed_in? )  %> 
+<% if user_signed_in?  %> 
 	<%= render "comments/form" %>
 <% end %>
 
 
   <div class='controls_area'>
     <%= link_to "back to all", posts_path, :class => 'btn btn-primary admin_area_btn' %> 
-    <% if ( current_user && current_user.id == @post.user_id ) or current_admin %> 
+    <% if ( current_user && current_user.id == @post.user_id ) or ( current_user && current_user.roles.first.name == "admin") %>
     	<%= link_to 'Edit', edit_post_path, :class => 'btn btn-primary admin_area_btn' %> 
       <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
     <% end %>

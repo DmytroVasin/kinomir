@@ -4,9 +4,7 @@
 
 <legend><h3>Sign in</h3></legend>
 
-<% if current_admin %>
-	<blockquote><small>unlogin please, before you enter in user dirrectory</small></blockquote>
-<% else %>
+
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f| %>
 
@@ -38,7 +36,7 @@
 	<%= f.submit "Sign in", :class => 'btn'  %>
    </div>
 </div>
-<% end %>
+
 
 
 <%= render "users/shared/links" %>

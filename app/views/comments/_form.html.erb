@@ -1,23 +1,22 @@
 <div class='form_comment'>
 	<blockquote><h2>Add a comment:</h2></blockquote>
 	<div class = 'fild_to_add_comment'>
-    <div class='bottom_marg'>
-    <% if current_user.nil? %>
-      <%= current_admin.name %>:
-    <% else current_admin.nil? %>
-      <%= link_to current_user.name, servant_path(current_user.id) %>:
-    <% end %>
+    	<div class='bottom_marg'>
+    	    <% if current_user.roles.first.name == "user" %>
+    	      <%= link_to current_user.name, servant_path(current_user.id) %>:
+    	    <% else %>    
+    	      <%= current_user.name %>:
+    	    <% end %>
+    	</div> 	
 
-    </div> 	
-  	<% if current_user.nil? %>
-  	    <% if current_admin.nil? %>
-  	      <%= image_tag("avatars/noneavatars.png") %>
-  	    <% else %>
-  	      <%= image_tag("avatars/admin.png") %>
-  	    <% end %>
-  	<% else %>
-  	      <%= image_tag avatar_url(current_user) %>
-  	<% end %>
+
+	<% if current_user.roles.first.name == "user" %>
+   		<%= image_tag avatar_url(current_user) %>
+	<% elsif current_user.roles.first.name == "admin" %> 
+   		<%= image_tag("avatars/admin.png") %>
+  <% end %>
+
+
 
 		<%= form_for([@post, @post.comments.build], remote: true) do |f| %>
 		    <%= f.text_area :body, :class => 'field_to_add', :placeholder => "Add some comment with ajax"  %>

@@ -1,13 +1,13 @@
 <div class='fild_to_add_comment'>
 
   <div class='autor_com bottom_marg'>
-  	<% if comment.user.present? %>
-      <%= link_to comment.user.name, servant_path(comment.user.id) %> says:
-  	<% elsif comment.admin_id.present? %>
-  		<%= comment.admin.name %> says:
-  	<% else %>	
-  		<span class='del'>Deleted user</span> says:
-  	<% end %>
+    <% if comment.user.nil? %>
+        <span class='del'>Deleted user</span> says:
+    <% elsif comment.user.roles.first.name == "user" %>
+        <%= link_to comment.user.name, servant_path(comment.user.id) %> says:
+    <% elsif comment.user.roles.first.name == "admin" %>    
+        <%= comment.user.name %> says:
+    <% end %>
   </div>
     
   <div class='time_com'>
@@ -18,13 +18,11 @@
 
   <div>
     <% if comment.user.nil? %>
-        <% if comment.admin.nil? %>
-          <td><%= image_tag("avatars/noneavatars.png") %></td>
-        <% else %>
-          <td><%= image_tag("avatars/admin.png") %></td>
-        <% end %>
-    <% else %>
-          <td><%= link_to image_tag(avatar_url(comment.user)), servant_path(comment.user.id) %></td>
+      <%= image_tag("avatars/noneavatars.png") %>
+    <% elsif comment.user.roles.first.name == "user" %>
+      <%= link_to image_tag(avatar_url(comment.user)), servant_path(comment.user.id) %>
+    <% elsif comment.user.roles.first.name == "admin" %> 
+      <%= image_tag("avatars/admin.png") %>
     <% end %>
   </div>
 
@@ -32,9 +30,10 @@
     <%= comment.body %>
   </div>  
 
-  <% if ( current_user && current_user.id == comment.user_id ) or current_admin %> 
+  <% if ( current_user && current_user.id == comment.user_id ) or ( current_user && current_user.roles.first.name == "admin") %> 
   	<%= link_to 'Delete', [comment.post, comment], :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-mini del_com' %>
   <% end %>
+
 <div class='clear'></div>
 </div>
 

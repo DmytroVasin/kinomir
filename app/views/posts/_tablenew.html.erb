@@ -18,15 +18,14 @@
     <div class='autor'>
       <span>Опубликовал:</span>
         <% if post.user.nil? %>
-          <% if post.admin.nil? %>
             <span class='del'>Deleted</span>
-          <% else %>
-            <%= post.admin.name %>
-          <% end %>
-        <% else %>
+        <% elsif post.user.roles.first.name == "user" %>
             <%= link_to post.user.name, servant_path(post.user.id) %>
+        <% elsif post.user.roles.first.name == "admin" %>    
+            <%= post.user.name %>
         <% end %>
     </div>
+
     <div class='tags'>
       <% post.categories.each do |cat| %>
         <i class="icon-tag"></i>
@@ -37,10 +36,14 @@
     <div class='controls_area'>
       <span class='count_comments'>( <%= pluralize(post.comments.count, ") comment") %></span>
       <%= link_to 'Show', post_path(post.id) , :class => 'btn btn-primary admin_area_btn'%>
-      <% if ( current_user && current_user.id == post.user_id ) or current_admin %> 
+      
+      <% if can? :update, post %> 
         <%= link_to 'Edit', edit_post_path(post.id), :class => 'btn btn-primary admin_area_btn' %>
+      <% end %>
+      <% if can? :destroy, post %>  
         <%= link_to 'Destroy', post_path(post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
       <% end %>
+
     </div>
   </div>
 <% end %>

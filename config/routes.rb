@@ -3,7 +3,6 @@ General::Application.routes.draw do
   root :to => 'start_page#index'
 
 
-  devise_for :admins
   devise_for :users, :path_names => { :sign_in => 'login', :sign_up => 'registration' }
 
   

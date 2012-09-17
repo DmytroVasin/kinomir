@@ -13,49 +13,43 @@
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a>
         <%= link_to ' Home', root_path, :class => 'brand' %>
         <div class="nav-collapse">
-          <ul class="nav">
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <li><%= link_to "Posts", posts_path %></li>
+          <li class="divider-vertical"></li>
+          <% if user_signed_in? %>
+            <% if current_user.roles.first.name == "user" %>
+              <li><%= link_to current_user.email, servant_path(current_user.id) %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+              <li class="divider-vertical"></li>
+            <% elsif current_user.roles.first.name == "admin" %>
+              <li><%= link_to current_user.name, '/', :class => 'admin_name' %></li>
+              <li class = 'icon-exclamation-sign'></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to "Servants", servants_path, :class => 'admin_name' %></li>
+              <li class="divider-vertical"></li>
+              <li><%= link_to "Categories", categories_path, :class => 'admin_name' %></li>
+              <li class="divider-vertical"></li>
+            <% end %>  
+          <% else %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
             <li class="divider-vertical"></li>
-            <li><%= link_to "Posts", posts_path %></li>
+            <li><%= link_to "sign in", new_user_session_path %></li>
             <li class="divider-vertical"></li>
-            <% if !admin_signed_in? %>
-                  <% if user_signed_in? %>
-                    <li><%= link_to current_user.email, servant_path(current_user.id) %></li>
-                    <li class="divider-vertical"></li>
-                    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                    <li class="divider-vertical"></li>
-                  <% else %>
-                    <li><%= link_to "Sign up", new_user_registration_path %></li>
-                    <li class="divider-vertical"></li>
-                    <li><%= link_to "sign in", new_user_session_path %></li>
-                    <li class="divider-vertical"></li>
-                  <% end %>
-            <% end %>
-            <% if admin_signed_in? %>
-                    <li><%= link_to current_admin.name, '/', :class => 'admin_name' %></li>
-                    <li class = 'icon-exclamation-sign'></li>
-                    <li class="divider-vertical"></li>
-                    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-                    <li class="divider-vertical"></li>
-                    <li><%= link_to "Servants", servants_path, :class => 'admin_name' %></li>
-                    <li class="divider-vertical"></li>
-                    <li><%= link_to "Categories", categories_path, :class => 'admin_name' %></li>
-                    <li class="divider-vertical"></li>
-            <% end %>
-          </ul>
-        </div>
-    
-        <% unless ( current_user or current_admin ) %>
-          <%= form_for("user", :url => user_session_path, :html => {:class => 'navbar-form pull-left' } ) do |f| %>
-            <%= f.text_field :email, :class => "input-small", :placeholder => "Email" %>
-            <%= f.password_field :password, :class => "input-small", :placeholder => "Password"  %> 
-            <%= f.submit 'Sign in', :class => "btn" %>
+              <%= form_for("user", :url => user_session_path, :html => {:class => 'navbar-form pull-left' } ) do |f| %>
+                <%= f.text_field :email, :class => "input-small", :placeholder => "Email" %>
+                <%= f.password_field :password, :class => "input-small", :placeholder => "Password"  %> 
+                <%= f.submit 'Sign in', :class => "btn from_top_marg" %>
+              <% end %>
           <% end %>
-        <% end %>
-
+        </ul>
+        </div>
       </div>
     </div>
   </div>
-
     <% flash.each do |name, msg| %>
       <div class="alert alert-<%= name == :notice ? 'success' : 'error' %> ">
         <strong><%= msg %></strong>

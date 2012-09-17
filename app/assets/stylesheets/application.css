@@ -248,3 +248,10 @@ input {
 	top: 14px;
 	left: 60px;
 }
+
+.input-append {
+	margin-bottom: 15px !important;
+}
+.from_top_marg {
+	margin-top: 4px !important;
+}

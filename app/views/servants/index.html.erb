@@ -1,7 +1,7 @@
 <% title "Users(only admin)" %>
 <blockquote><h3>MY SERVANTS</h3></blockquote>
 
-<div id=''>
+
 <table class = 'table table-striped table-bordered' >
   <tr>
     <th>Avatars</th>
@@ -36,10 +36,12 @@
 
       <td>
       	<%= link_to 'show', servant_path(i.id), :class => 'btn btn-success' %>
-        <%= link_to "del", servant_path(i.id), :method => :delete , :class => 'btn btn-danger' %> 
+        <% if i.roles.first.name == "user" %> 
+          <%= link_to "delete", servant_path(i.id), :method => :delete , :confirm => 'Are you sure?', :class => 'btn btn-danger' %> 
+        <% end %>
       </td>
     </tr>
 
   <% end %>
 </table>
-</div>
+

@@ -23,3 +23,6 @@ CSV.foreach(Rails.root.join("states.csv"), headers: true) do |row|
     state.country_id = row[2]
   end
 end
+
+Role.create(:name => :admin)
+Role.create(:name => :user)

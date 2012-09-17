@@ -30,6 +30,7 @@ gem 'kaminari'
 gem 'pg_search'
 gem "mini_magick"
 gem "carrierwave"
+gem 'cancan'
 
 
 gem 'thin'

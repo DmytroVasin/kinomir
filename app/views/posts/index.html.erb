@@ -9,7 +9,7 @@
 <% end %>
 
 
-<% if ( user_signed_in? or admin_signed_in? )%>  
+<% if can? :create, Post %>
   <%= link_to 'Create new post', new_post_path, :class => 'btn btn-large btn-primary new_post' %>  
 <% end %>  
 
