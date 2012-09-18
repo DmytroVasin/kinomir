@@ -4,8 +4,8 @@ http://kinomir-anahoret.herokuapp.com/
 
 	В нем используется:
 		- PostgreSQL
-		- gem twitter-bootstrap-rails
-		- gem jquery-rails
+		- gem twitter-bootstrap-rails 
+		- gem jquery-rails (Ajax применен только для регистрации нового пользователя)
 		- gem devise
 		- gem client_side_validations 
 		- gem kaminari ( в начале пагинация была Ajax-ом -потом заменил на постраничную, при обновлении текущая страница сохраняется )
@@ -68,7 +68,7 @@ http://kinomir-anahoret.herokuapp.com/
 		- может просматривать посты и профили
 
 
-# дальше расписана каждая страница в более глубоком смысле 
+# дальше расписана каждая страница в более детально:
 
 
 # Это моё первое приложение 
