@@ -10,6 +10,9 @@ General::Application.routes.draw do
   
   resources :posts do
     resources :comments
+    resources :vote, :only => [:update] do
+      delete 'clear'
+    end
   end
   resources :servants
   resources :categories

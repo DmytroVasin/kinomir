@@ -1,0 +1,21 @@
+<% if can? :update, Vote %>
+  	<%= form_for [@post, @post.vote] do |f| %>
+  	<%= f.label :score, "one"%>
+  	<%= f.radio_button :score, "1" %>
+  	<%= f.label :score, "two"%>
+  	<%= f.radio_button :score, "2" %>
+  	<%= f.label :score, "three"%>
+  	<%= f.radio_button :score, "3" %>
+ 	  <%= f.label :score, "four"%>
+  	<%= f.radio_button :score, "4" %>
+  	<%= f.label :score, "five"%>
+  	<%= f.radio_button :score, "5" %>
+
+  	<%= f.submit "vote" %>
+ 
+  <% end %>
+<% end %>
+
+<% if can? :clear, Vote %>
+ <%= link_to 'Clear', post_vote_clear_path(@post, @post.vote), method: :delete, :class => 'btn btn-danger btn-mini clear_btn_for_stars' %>
+<% end %>

@@ -190,7 +190,7 @@ input {
 	color: #605E5E;
 	line-height: 22px;
 	margin-bottom: 10px;
-	min-height: 360px;
+	min-height: 370px;
 }
 .avatar_of_post_user {
 	float: right;
@@ -255,3 +255,67 @@ input {
 .from_top_marg {
 	margin-top: 4px !important;
 }
+
+
+
+
+.raiting {
+	position:relative; 
+	height:16px; 
+	width:83px; 
+	float:left;
+} 
+.pointer_for_star {
+	cursor: pointer;
+}
+.raiting_blank {
+	height:16px; 
+	position:absolute;
+	width:83px; 
+	background: url('../images/ratings.png'); 
+}
+.raiting_votes {
+	height:16px; 
+	position:absolute;
+	background: url('../images/ratings.png');
+	background-position: 0 -16px;
+}
+.raiting_hover {
+	height:16px; 
+	position:absolute;
+	background: url('../images/ratings.png');
+	background-position: 0 -32px; 
+}
+.in_center {
+	margin-left: 500px;
+}
+.clear_btn_for_stars {
+	margin-left: 10px;
+}
+
+
+
+.position_for_starz {
+	position: absolute;
+	right: 20px;
+	bottom: 18px;
+}
+.raiting_index {
+	position:relative; 
+	height:16px; 
+	width:83px; 
+	float:left;
+
+} 
+.raiting_blank_index {
+	height:16px; 
+	position:absolute;
+	width:83px; 
+	background: url('../images/ratings.png'); // добавить в Public звёздочки ( в трёх видах )
+}
+.raiting_votes_index {
+	height:16px; 
+	position:absolute;
+	background: url('../images/ratings.png');
+	background-position: 0 -16px;
+} 

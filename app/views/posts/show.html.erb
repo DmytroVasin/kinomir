@@ -45,6 +45,25 @@
   <% end %>
 </span>
 <div class='time_pablised'>Published at: <%= @post.created_at.strftime('%e %B %Y, %H:%M') %></div>
+
+
+      <% if @post.user.nil? %>
+        <div class="raiting in_center">
+          <div class="raiting_blank"></div>
+        </div>
+      <% else %>
+        <div class='hidden_rank'>
+          <%= number_with_precision(@post.vote.score.to_f/@post.vote.count_users) %>
+        </div>
+
+        <div class="raiting in_center pointer_for_star">
+          <div class="raiting_blank"></div>
+          <div class="raiting_hover"></div>
+          <div class="raiting_votes"></div>
+        </div>
+        <%= render 'vote/update' %>
+      <% end %>
+
 <hr>
 
 <div id='all_comments'>

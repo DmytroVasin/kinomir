@@ -32,6 +32,7 @@
         <%= link_to cat.name, posts_path(:cat=>cat.id) %>
       <% end %>
     </div>
+
     <div class='clear'></div>
     <div class='controls_area'>
       <span class='count_comments'>( <%= pluralize(post.comments.count, ") comment") %></span>
@@ -44,6 +45,24 @@
         <%= link_to 'Destroy', post_path(post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
       <% end %>
 
+      <% if post.user.nil? %>
+        <div class='position_for_starz'>
+          <div class="raiting_index">
+            <div class="raiting_blank_index"></div>
+          </div>
+        </div>
+      <% else %>
+        <div class='position_for_starz'>
+            <div class='hidden_rank_index'>
+              <%= number_with_precision(post.vote.score.to_f/post.vote.count_users) %>
+            </div>
+            
+            <div class="raiting_index">
+              <div class="raiting_blank_index"></div>
+              <div class="raiting_votes_index"></div>
+            </div>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :votes
 
   belongs_to :country
   belongs_to :state

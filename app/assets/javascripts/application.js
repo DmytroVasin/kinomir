@@ -18,7 +18,7 @@
 //= require rails.validations
 
 
-// Включение и отключение клавиши при добавлении кментария
+// ---------------------------------------------------- Включение и отключение клавиши при добавлении кментария START
 $(function(){
 var box = 0;
 $("#new_comment input:submit").attr("disabled","disabled");
@@ -31,9 +31,9 @@ $("#new_comment input:submit").attr("disabled","disabled");
 			$("#new_comment input:submit").attr("disabled","disabled");
 		}
 	});
-	
-// выберите одну тему - к которой принадлежит ваш пост
+// ---------------------------------------------------- Включение и отключение клавиши при добавлении кментария END
 
+// ---------------------------------------------------- проверка нажат ли чебокс при создании поста START
 	$("#new_post").submit(function(){
         var n = $("input:checked").length;
         if ( n === 0 ) {
@@ -45,16 +45,72 @@ $("#new_comment input:submit").attr("disabled","disabled");
 	if ($('.alert strong').html() !== '') {
 		$('.alert').fadeOut(4000);
 	}
+// ---------------------------------------------------- проверка нажат ли чебокс при создании поста END
 
-	function SetTimeZone() {
+// ---------------------------------------------------- Current date START
         var today = new Date();
         var offset = -(today.getTimezoneOffset()/60);
         $.cookie('time_zone', offset);
-	}
+// ---------------------------------------------------- Current date END
 
-SetTimeZone();
+// ---------------------------------------------------- STARZ START
+$(".hidden_rank").css('display','none');
+$('.raiting_votes').css('display', 'block');
+$('.raiting_hover').css('display', 'none');
+$('.edit_vote').css('display', 'none');
 
-	
+	var hidden_rank;
+	var star_widht;
+	var margin_doc;
+	var widht_votes;
+// each - остаток от прошлого велосипеда
+$(".hidden_rank").each(function() {
+		hidden_rank = $(this).html();
+		star_widht = hidden_rank*17;
+		$(this).next().children(".raiting_votes").width(star_widht);
+
+	$(this).next().hover(function() {
+       $(this).children(".raiting_votes").css('display', 'none');
+       $(this).children(".raiting_hover").css('display', 'block');
+       }, function() {
+       $(this).children(".raiting_votes").css('display', 'block');
+       $(this).children(".raiting_hover").css('display', 'none');
+	});
+	margin_doc = $(this).next().offset();
+	$(this).next().mousemove(function(e){
+		widht_votes = e.pageX - margin_doc.left;
+        if (widht_votes === 0) widht_votes =1;
+		user_votes = Math.ceil(widht_votes/17);
+		$(this).children('.raiting_hover').width(user_votes*17);
+	});
+	$(this).next().on('click', function(e){
+		widht_votes = e.pageX - margin_doc.left;
+		if (widht_votes === 0) widht_votes =1;
+		user_votes = Math.ceil(widht_votes/17);
+		user_votes -= 1;
+		$(this).next().find('input:radio').eq(user_votes).prop('checked', true);
+		
+		$('form').submit();
+
+	});
+});
+// ---------------------------------------------------- STARZ END
+
+// ---------------------------------------------------- STARZ INDEX START
+$(".hidden_rank_index").css('display','none');
+$('.raiting_votes_index').css('display', 'block');
+
+	var hidden_rank_index;
+	var star_widht_index;
+
+$(".hidden_rank_index").each(function() {
+		hidden_rank_index = $(this).html();
+		star_widht_index = hidden_rank_index*17;
+		$(this).next().children(".raiting_votes_index").width(star_widht_index);
+});
+// ---------------------------------------------------- STARZ INDEX END
+
+
+
 
 });
-

@@ -26,3 +26,13 @@ end
 
 Role.create(:name => :admin)
 Role.create(:name => :user)
+
+
+Category.create(:name => :Action)
+Category.create(:name => :Adventure)
+Category.create(:name => :Comedy)
+Category.create(:name => :Drama)
+Category.create(:name => :Horror)
+Category.create(:name => :Fantasy)
+Category.create(:name => :Crime)
+Category.create(:name => :Sports)

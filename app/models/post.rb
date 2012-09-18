@@ -1,9 +1,14 @@
 class Post < ActiveRecord::Base
+
+  after_create :create_vote
+
   attr_accessible :text, :title, :category_ids, :image
 
   has_and_belongs_to_many :categories
-
   has_many :comments, :dependent => :destroy
+  has_one :vote, :dependent => :destroy
+
+
   belongs_to :user
 
   validates :title, :presence => true, :length => { :minimum => 2 }
@@ -28,5 +33,13 @@ pg_search_scope :search, against: [:title, :text],
 	    scoped
 	  end
 	end
+
+    protected
+    
+    def create_vote
+      self.vote = Vote.create(:score => 0)
+    end
+
+
 
 end
