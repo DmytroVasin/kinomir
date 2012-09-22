@@ -1,0 +1,50 @@
+$('#vote_update').html("<%= escape_javascript(render(:partial => 'vote/update', locals: { post: @post })) %>");
+
+$('.notic').show();
+$('.notic strong').html('Ваш голос учтён!');
+$('.notic').fadeOut(4000);
+
+
+
+//   TO HIDE forms and ranks ---------------------------------------------------------------------------------------
+
+$(".hidden_rank").css('display','none');
+$('.raiting_votes').css('display', 'block');
+$('.raiting_hover').css('display', 'none');
+$('.edit_vote').css('display', 'none');
+
+	var hidden_rank;
+	var star_widht;
+	var margin_doc;
+	var widht_votes;
+// each - остаток от прошлого велосипеда
+$(".hidden_rank").each(function() {
+		hidden_rank = $(this).html();
+		star_widht = hidden_rank*17;
+		$(this).next().children(".raiting_votes").width(star_widht);
+
+	$(this).next().hover(function() {
+       $(this).children(".raiting_votes").css('display', 'none');
+       $(this).children(".raiting_hover").css('display', 'block');
+       }, function() {
+       $(this).children(".raiting_votes").css('display', 'block');
+       $(this).children(".raiting_hover").css('display', 'none');
+	});
+	margin_doc = $(this).next().offset();
+	$(this).next().mousemove(function(e){
+		widht_votes = e.pageX - margin_doc.left;
+        if (widht_votes === 0) widht_votes =1;
+		user_votes = Math.ceil(widht_votes/17);
+		$(this).children('.raiting_hover').width(user_votes*17);
+	});
+	$(this).next().on('click', function(e){
+		widht_votes = e.pageX - margin_doc.left;
+		if (widht_votes === 0) widht_votes =1;
+		user_votes = Math.ceil(widht_votes/17);
+		user_votes -= 1;
+		$(this).next().find('input:radio').eq(user_votes).prop('checked', true);
+		
+		$('#submitt').submit();
+
+	});
+});

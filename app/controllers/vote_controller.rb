@@ -3,8 +3,8 @@ class VoteController < ApplicationController
   load_and_authorize_resource
 
   def update
-    post = Post.find(params[:post_id])
-    vote = post.vote
+    @post = Post.find(params[:post_id])
+    vote = @post.vote
        
     vote.score += 1 if params[:vote][:score] == "1"
     vote.score += 2 if params[:vote][:score] == "2"
@@ -15,10 +15,18 @@ class VoteController < ApplicationController
     vote.count_users += 1
 
     vote.users << current_user
-    vote.save
- 
-    flash[:notice] = "You vote counted!"
-    redirect_to post_path(post)
+    
+      respond_to do |format|
+        if vote.save
+          format.html { 
+            redirect_to post_path(@post),
+            :notice => "You vote counted!"
+          }
+          format.js
+          # flash[:notice] = "You vote counted!"
+          # redirect_to post_path(post)
+        end
+      end
   end
    
 

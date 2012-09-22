@@ -13,7 +13,11 @@ General::Application.routes.draw do
     resources :vote, :only => [:update] do
       delete 'clear'
     end
+    resources :photos
   end
+
+
+  
   resources :servants
   resources :categories
   # The priority is based upon order of creation:

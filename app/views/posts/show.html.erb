@@ -7,15 +7,15 @@
   <% end %>
 
 
-
 <div class ='title_of_post_show'>
   <%= @post.title %>
 </div>
  
 <div class ='text_of_post_show'>
-  <%= @post.text %>
+  <%= raw RedCloth.new( sanitize( @post.text ), [:filter_html, :filter_styles, :filter_ids] ).to_html %>
 </div>
 
+<div class='clear'></div>
 <div class='autor'>
   <strong>Autor:</strong>
     <% if @post.user.nil? %>
@@ -47,22 +47,10 @@
 <div class='time_pablised'>Published at: <%= @post.created_at.strftime('%e %B %Y, %H:%M') %></div>
 
 
-      <% if @post.user.nil? %>
-        <div class="raiting in_center">
-          <div class="raiting_blank"></div>
-        </div>
-      <% else %>
-        <div class='hidden_rank'>
-          <%= number_with_precision(@post.vote.score.to_f/@post.vote.count_users) %>
-        </div>
+  <div id='vote_update'>
+    <%= render :partial => 'vote/update', locals: { post: @post } %>
+  </div>
 
-        <div class="raiting in_center pointer_for_star">
-          <div class="raiting_blank"></div>
-          <div class="raiting_hover"></div>
-          <div class="raiting_votes"></div>
-        </div>
-        <%= render 'vote/update' %>
-      <% end %>
 
 <hr>
 
@@ -86,3 +74,6 @@
   </div>
 
 </div>
+
+
+<%= link_to 'Upload Photos', post_photos_path(@post) %>

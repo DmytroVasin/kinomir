@@ -41,12 +41,19 @@ $("#new_comment input:submit").attr("disabled","disabled");
         return false;
         }
 	});
-
-	if ($('.alert strong').html() !== '') {
-		$('.alert').fadeOut(4000);
-	}
 // ---------------------------------------------------- проверка нажат ли чебокс при создании поста END
-
+// ---------------------------------------------------- Всплывающее флеш сообщение Start
+	if ($('.notic strong').html() !== '') {
+		$('.notic').fadeOut(4000);
+	} else {
+		$('.notic').hide();
+	}
+	if ($('.aler strong').html() !== '') {
+		$('.aler').fadeOut(4000);
+	} else {
+		$('.aler').hide();
+	}
+// ---------------------------------------------------- Всплывающее флеш сообщение  END
 // ---------------------------------------------------- Current date START
         var today = new Date();
         var offset = -(today.getTimezoneOffset()/60);
@@ -90,7 +97,7 @@ $(".hidden_rank").each(function() {
 		user_votes -= 1;
 		$(this).next().find('input:radio').eq(user_votes).prop('checked', true);
 		
-		$('form').submit();
+		$('#submitt').submit();
 
 	});
 });

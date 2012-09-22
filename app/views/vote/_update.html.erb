@@ -1,21 +1,36 @@
-<% if can? :update, Vote %>
-  	<%= form_for [@post, @post.vote] do |f| %>
-  	<%= f.label :score, "one"%>
-  	<%= f.radio_button :score, "1" %>
-  	<%= f.label :score, "two"%>
-  	<%= f.radio_button :score, "2" %>
-  	<%= f.label :score, "three"%>
-  	<%= f.radio_button :score, "3" %>
- 	  <%= f.label :score, "four"%>
-  	<%= f.radio_button :score, "4" %>
-  	<%= f.label :score, "five"%>
-  	<%= f.radio_button :score, "5" %>
-
-  	<%= f.submit "vote" %>
- 
-  <% end %>
-<% end %>
-
-<% if can? :clear, Vote %>
- <%= link_to 'Clear', post_vote_clear_path(@post, @post.vote), method: :delete, :class => 'btn btn-danger btn-mini clear_btn_for_stars' %>
+<% if post.user.nil? %>
+  <div class="raiting in_center">
+    <div class="raiting_blank"></div>
+  </div>
+<% else %>
+    <div class='hidden_rank'>
+      <%= number_with_precision(post.vote.score.to_f/post.vote.count_users) %>
+    </div>
+    <div class="raiting in_center pointer_for_star">
+      <div class="raiting_blank"></div>
+      <div class="raiting_hover"></div>
+      <div class="raiting_votes"></div>
+    </div>
+    <% unless post.vote.users.include?(current_user) %>
+      <% if can? :update, Vote %>
+        	<%= form_for([post, post.vote], remote: true ) do |f| %>
+        	<%= f.label :score, "one"%>
+        	<%= f.radio_button :score, "1" %>
+        	<%= f.label :score, "two"%>
+        	<%= f.radio_button :score, "2" %>
+        	<%= f.label :score, "three"%>
+        	<%= f.radio_button :score, "3" %>
+       	  <%= f.label :score, "four"%>
+        	<%= f.radio_button :score, "4" %>
+        	<%= f.label :score, "five"%>
+        	<%= f.radio_button :score, "5" %>
+      
+        	<%= f.submit "vote", :id => 'submitt' %>
+       
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if can? :clear, Vote %>
+     <%= link_to 'Clear', post_vote_clear_path(post, post.vote), method: :delete, :class => 'btn btn-danger btn-mini clear_btn_for_stars' %>
+    <% end %>
 <% end %>

@@ -1,0 +1,18 @@
+<% title 'Фотографии для '+@post.title %>
+
+<blockquote>
+	<h2>Фото: <%= @post.title %></h2>
+	<p><small>Все фотографии для поста</small></p>
+</blockquote>
+
+
+<%= link_to 'Back', post_path(@post), :class => 'back_photo_btn btn btn-small btn-primary' %>
+<%= link_to 'Upload Photos', new_post_photo_path(@post), :class => 'back_photo_btn btn btn-small btn-success' %>
+<br />
+<div id="post">
+  <ul id="grid">
+    <% @photos.each do |pic| %>
+    	<li><%= link_to image_tag(pic.photo_file.url(:thumb).to_s), post_photo_path(@post,pic) %></li>
+    <% end %>
+  </ul>
+</div>

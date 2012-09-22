@@ -50,11 +50,14 @@
       </div>
     </div>
   </div>
-    <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name == :notice ? 'success' : 'error' %> ">
-        <strong><%= msg %></strong>
+    
+      <div class="alert alert-success notic">
+        <strong><%= flash[:notice] %></strong>
       </div>
-    <% end %>
+      <div class="alert alert-error aler">
+        <strong><%= flash[:alert] %></strong>
+      </div>
+    
 
 <%= yield %>
 

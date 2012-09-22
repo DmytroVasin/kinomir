@@ -21,7 +21,7 @@ class Ability
             !vote.users.include?(user)   
         # он может делать update для Vote - голоcовать ( если еще не голосовал )
         end
-        
+
     elsif user.roles.first.name == "admin"
         # login as admin
         can :manage, Post # Поставил пост а не :all если будет :all то сможет голосовать вечно

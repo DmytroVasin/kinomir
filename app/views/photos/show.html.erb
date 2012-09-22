@@ -1,0 +1,10 @@
+<% title 'Фото для '+@post.title %>
+<blockquote>
+	<h2>Фото: <%= @post.title %></h2>
+	<p><small><%= @photo.photo_file %></small></p>
+</blockquote>
+<div id='photos_solo_img'>
+	<%= image_tag(@photo.photo_file.url(:medium).to_s) %>
+</div>
+<%= link_to "Delete Photo", post_photo_path(@post, @photo), :method => "delete", :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+<%= link_to 'Back', post_photos_path, :class => 'btn btn-primary' %>

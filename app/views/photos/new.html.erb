@@ -1,0 +1,18 @@
+<% title 'Upload page' %>
+
+<div class='all_upload_field'>
+<%= form_for [@post, @photo], :html => {:multipart => true} do |f| %>
+  	<%= f.hidden_field :post_id %>
+  	
+	<div id="test">
+	    <div class="wrapper">
+	    	<%= f.file_field :photo_file %>
+	    </div>
+	    <button class='btn'>Select a file</button>
+	</div>
+  <p><%= f.submit 'Upload', :class => 'btn btn-success upload_btn_for_photo' %></p>
+<% end %>
+
+<%= link_to 'To post', posts_path, :class => 'btn btn-inverse clear_btn_for_stars' %>
+<%= link_to 'All photo', post_photos_path(@post), :class => 'btn btn-primary' %>
+</div>

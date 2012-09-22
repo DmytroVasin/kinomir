@@ -13,6 +13,8 @@
  */
 body {
 	background-color: #FAFAFA !important;
+	margin: 0 auto !important;
+	width: 1350px;
 }
 input {
 	width: 150px !important;
@@ -319,3 +321,61 @@ input {
 	background: url('../images/ratings.png');
 	background-position: 0 -16px;
 } 
+.back_photo_btn {
+	margin-left: 40px;
+	margin-bottom: 10px !important;
+}
+#grid {
+	text-decoration: none;
+	list-style-type: none;
+}
+#grid li {
+	float: left;
+	margin: 5px;
+	border: 1px solid black;
+}
+#grid img:hover {
+	opacity: 0.5;
+}
+
+#photos_solo_img {
+	margin-left: 20px;
+	margin-right: 20px;
+	float: left;
+}
+.upload_btn_for_photo {
+	margin-left: 20px;
+	margin-top: 5px;
+}
+.all_upload_field {
+	margin-left: 50px;
+}
+/*-------------------------FILE FIELD START------------------------------------*/
+#test {
+    position: relative;
+}
+
+#test .wrapper {
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+#test .wrapper:hover {
+    opacity: 0.5;
+}
+
+#test button {
+    width: 200px;
+    padding: 3px 5px;
+    position: relative;
+    top: 0;
+    z-index: 1;
+}
+/*------------------------------FILE FIELD END-------------------------------*/
+/* Для редклос */
+.myclass {
+    margin-left: 200px;
+}

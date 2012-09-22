@@ -7,7 +7,9 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :categories
   has_many :comments, :dependent => :destroy
   has_one :vote, :dependent => :destroy
-
+# -----------------------------------------------
+  has_many :photos, :dependent => :destroy 
+# -----------------------------------------------
 
   belongs_to :user
 
