@@ -378,4 +378,5 @@ input {
 /* Для редклос */
 .myclass {
     margin-left: 200px;
+    clear: both;
 }
