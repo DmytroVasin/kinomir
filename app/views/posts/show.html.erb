@@ -70,10 +70,9 @@
     <% if ( current_user && current_user.id == @post.user_id ) or ( current_user && current_user.roles.first.name == "admin") %>
     	<%= link_to 'Edit', edit_post_path, :class => 'btn btn-primary admin_area_btn' %> 
       <%= link_to 'Destroy Post', post_path(@post.id), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-danger admin_area_btn' %>
+      <%= link_to 'Upload', post_photos_path(@post), :class => 'btn admin_area_btn' %>
     <% end %>
   </div>
 
 </div>
 
-
-<%= link_to 'Upload Photos', post_photos_path(@post) %>

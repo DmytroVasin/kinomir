@@ -172,9 +172,11 @@ input {
 #box_of_post_show {
 	width: 1250px;
 	margin-left: 30px;
+	text-align: justify;
 }
 #box_of_post_show img {
-	margin: 0 20px 5px 5px;
+	border: 2px solid black;
+	margin: 10px 20px 5px 5px;
 	float: left;
 }
 .title_of_post_show {
@@ -378,5 +380,9 @@ input {
 /* Для редклос */
 .myclass {
     margin-left: 200px;
-    clear: both;
+}
+
+.clear_after_myclass {
+	clear: both;
+	margin-bottom: 10px;
 }
