@@ -1,4 +1,4 @@
-http://kinomir-anahoret.herokuapp.com/
+http://kinomir.herokuapp.com/
 
 	### Приложение, за основу которого взято http://lostfilm.info/
 
